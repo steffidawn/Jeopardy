@@ -27,7 +27,7 @@ body {
 #jeopardyBoard {
 	z-index: 0;
 	text-align: center;
-
+	margin-right: 20px;
 }
 
 
@@ -70,9 +70,18 @@ body {
 	height:750px;
 }
 
-#hiddenAnswer {
+#scorePodiums {
+	transform: scale(0.75);
+	text-align: center;
 }
 
+#scores {
+	display: inline-block;
+}
+
+.response {
+	display:none;
+}
 #welcomeScreen {
 	height: 750px;
 	background-image: url("JeopardyWelcome.png");

@@ -3,14 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
 var categories = [];
 var clues = [];
 var properCategories = [];
-var seanArr = [];
-var AI = "";
+var seanArr = ["You think you're pretty smart, don't you, Trebek? What with your Diego mustache and your greasy hair!", "Moo", "Febtober", "Potent Potables!"];
+var player = "";
+var sean = "Sean";
+var ken = "Ken";
+var human = "";
+var seanScore = 0;
+var kenScore = 0;
+var humanScore = 0;
 
 
 $.get('http://jservice.io/api/categories?count=10', {
 }).done(function(data) {
   	categories = data;
   	properCategories = categories.filter(function(item) {
+  		console.log(properCategories);
   		if (item.clues_count > 5) {
   			return false;
   		} else {
@@ -21,7 +28,7 @@ $.get('http://jservice.io/api/categories?count=10', {
   	console.log(properCategories);
 
 	  for (let i = 0; i < properCategories.length; i++) {
-	  	$.get('http://jservice.io/api/clues?category=' + categories[i].id,{
+	  	$.get('http://jservice.io/api/clues?category=' + properCategories[i].id,{
 		}).done(function(foo) {
 			console.log("second ajax call is done");
 			// console.log(foo);
@@ -54,24 +61,41 @@ $('.squares').click(function(e){
 	$('#gameBoard').hide();
 	$('#clueScreen').show();
 	$('.clue').append('<p>' + clues[ squareArr[0] ][ squareArr[1] ].question + '</p>')
-	if 
+	
+	setTimeout(timer);
 	//insert timer // if statement - if buzz in time, show submit answer window. if not buzzed in time, choose random player (create celebrity function?). 
 	$('#submitAnswer').click(function(e){
 		$('.clue').append('<p id="hiddenAnswer">' + clues[ squareArr[0] ][ squareArr[1] ].answer + '</p>');
+	updateScore();
 	})
 	//grab clues div and append question from clues array
 });
 
+var timer = setTimeout(function(timer){
+	if $('#buzzer').click(function(){
+	clearTimeout(timer);
+	$('.response').show();
+}else{
+	aiPlayer();
+}, 5000);
 
-function updateScore() {
-	if ($('#answerInput').val() === $('#hiddenAnswer')) {
-		//$('#hiddenAnswer').show();
-		//some kind of identify that question was answered correctly 
 
-	}else{
-		//$('#hiddenAnswer').show();
+function aiPlayer() {
+	if (Math.random() < 0.5) {
+		AI = "ken";
+		//
 	}
 }
+
+// function updateScore() {
+// 	if ($('#answerInput').val() === $('#hiddenAnswer')) {
+// 		//$('#hiddenAnswer').show();
+// 		//some kind of identify that question was answered correctly 
+
+// 	}else{
+// 		//$('#hiddenAnswer').show();
+// 	}
+// }
 //make a hidden <p> and then compare input value to text value of <p> to get correct answer
 //if correct, increase score by dollar value associated with square, else decrease dollar value
 
