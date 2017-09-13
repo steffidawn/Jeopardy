@@ -1,24 +1,130 @@
+/*font for numbers: font-family: 'Orbitron', sans-serif;
+
+font for Ken: font-family: 'Amatic SC', cursive;
+
+font for Sean: font-family: 'Sedgwick Ave', cursive;
+
+*/
+
 body {
   	margin: 0 auto;
   	background-size: 1000px;
-  	background-repeat:no-repeat;
+  	background-repeat: no-repeat;
 }
 
 #gameBoard {
-	text-align:center;
+	text-align: center;
+	background-image: url(jeopardy.png), url("clueScreenBackground.jpg");
+	background-size: 75%;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 1200px;
+	height: 700px;
+	display: none;
 }
 
 
 #jeopardyBoard {
 	z-index: 0;
+	text-align: center;
+
 }
 
-#squares {
-	display:inline-block;
+
+.squares {
+	height: 100px;
+	width: 150px;
+	display: inline-block;
+	font-family: impact;
+	font-size:30px;
+	font-weight: bold;
+	color: goldenrod;
+}
+
+.categorySquares {
 	height:100px;
 	width:150px;
+	margin-top: -200px;
+	padding-bottom:0px;
+	padding-top:0px;
+	font-size:15px;
+	font-family:impact;
+	font-weight:bold;
+	color:goldenrod;
+	display: inline-block;
 }
 
-#categories {
-	vertical-align: middle;
+
+.categories {
+	height:100px;
+	width:150px;
+	padding-bottom:0px;
+	padding-top:0px;
+	font-size:5px;
+}
+
+#clueScreen {
+	display:none;
+	background-image: url("clueScreenBackground.jpg");
+	background-size:cover;
+	height:750px;
+}
+
+#hiddenAnswer {
+}
+
+#welcomeScreen {
+	height: 750px;
+	background-image: url("JeopardyWelcome.png");
+	background-size:100%;
+	background-repeat:no-repeat;
+}
+
+#podium {
+	z-index:1;
+	height: 301px;
+	width: 798px;
+	text-align: center;
+	margin-left: 300px;
+	margin-top: -185px;
+	position:absolute;
+}
+
+.name {
+	text-align:center;
+}
+
+#alex {
+	margin-top:70px;
+	position:relative;
+}
+
+#ken {
+	z-index:0;
+	transform:scale(0.5);
+	margin-left:700px;
+	margin-top: -750px;
+	margin-bottom:40px;
+	position: relative;
+
+}
+
+#sean {
+	z-index:0;
+	transform:scale(0.5);
+	margin-left:225px;
+	margin-top: -750px;
+	margin-bottom:70px;
+	position: relative;
+}
+
+.clue {
+	width: 500px;
+	height: 500px;
+	border: 5px solid black;
+	background: blue;
+	font-family: impact;
+	font-weight: bold;
+	font-size: 25px;
+	color: goldenrod;
 }
