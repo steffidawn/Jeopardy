@@ -13,6 +13,7 @@ var kenScore = 0;
 var humanScore = 0;
 
 
+
 $.get('http://jservice.io/api/categories?count=10', {
 }).done(function(data) {
   	categories = data;
@@ -47,6 +48,7 @@ function showCategories(){
 }
 
 $('#submitName').click(function(){
+	//add append name to textboxes
 	$('#welcomeScreen').hide();
 	$('#gameBoard').show();
 	showCategories();
@@ -61,54 +63,140 @@ $('.squares').click(function(e){
 	$('#gameBoard').hide();
 	$('#clueScreen').show();
 	$('.clue').append('<p>' + clues[ squareArr[0] ][ squareArr[1] ].question + '</p>')
-	
+	$('#answerCheck').append('<p id="hiddenAnswer">' + clues[ squareArr[0] ][ squareArr[1] ].answer + '</p>');
 	setTimeout(timer);
-	//insert timer // if statement - if buzz in time, show submit answer window. if not buzzed in time, choose random player (create celebrity function?). 
 	$('#submitAnswer').click(function(e){
-		$('.clue').append('<p id="hiddenAnswer">' + clues[ squareArr[0] ][ squareArr[1] ].answer + '</p>');
 	updateScore();
 	})
-	//grab clues div and append question from clues array
+	
 });
 
-var timer = setTimeout(function(timer){
-	if $('#buzzer').click(function(){
-	clearTimeout(timer);
-	$('.response').show();
-}else{
+var timer = setTimeout(function(timer) {
+	$('#buzzer').click(function() {
+		$('.response').show();
+		clearTimeout(timer);
+	}); 
+	$('#buzzer').off('click');
 	aiPlayer();
-}, 5000);
+ }, 5000);
+
+
+
+$('#answerCheck').append($('#hiddenAnswer').val());
 
 
 function aiPlayer() {
-	if (Math.random() < 0.5) {
-		AI = "ken";
-		//
+if (Math.random() < 0.5) {
+	AI = "ken";
+	$('#answerCheck').append($('#hiddenAnswer').val());
+	kenScore();
+	}else{
+	AI = "sean";
+	$('#answerCheck').append(seanArr[Math.floor(Math.random()*items.length)]);
+	seanScore();
 	}
 }
 
-// function updateScore() {
-// 	if ($('#answerInput').val() === $('#hiddenAnswer')) {
-// 		//$('#hiddenAnswer').show();
-// 		//some kind of identify that question was answered correctly 
 
-// 	}else{
-// 		//$('#hiddenAnswer').show();
-// 	}
-// }
-//make a hidden <p> and then compare input value to text value of <p> to get correct answer
-//if correct, increase score by dollar value associated with square, else decrease dollar value
-
-
-function AIs(){
-	if(Math.random() < 0.5) {
-    AI = "ken";
-    $('#message').append('Harry is chasing after the Snitch!');
-    }else{
-    AI = "sean";
-    $('#message').append('Draco is chasing after the Snitch!');
-  }
+function updateScore() {
+	if ($('#answerInput').val() === $('#hiddenAnswer').val()) {
+		$('#hiddenAnswer').show();
+		addScore();
+	}else{
+ 		$('#hiddenAnswer').show();
+	}	subtractScore();
 }
+
+function addScore () {
+	$('.squares').click(function() {
+    switch (true) {
+      case $(this).hasClass('200clues'):
+        humanScore + 200;
+        break;
+      case $(this).hasClass('400clues'):
+        humanScore + 400;
+        break;
+      case $(this).hasClass('600clues'):
+        humanScore + 600;
+        break;
+      case $(this).hasClass('800clues'):
+        humanScore + 800;
+        break;
+      case $(this).hasClass('1000clues'):
+        humanScore + 1000;
+        break;
+    }
+}
+)};
+
+
+function subtractScore () {
+	$('.squares').click(function() {
+    switch (true) {
+      case $(this).hasClass('200clues'):
+        humanScore - 200;
+        break;
+      case $(this).hasClass('400clues'):
+        humanScore - 400;
+        break;
+      case $(this).hasClass('600clues'):
+        humanScore - 600;
+        break;
+      case $(this).hasClass('800clues'):
+        humanScore - 800;
+        break;
+      case $(this).hasClass('1000clues'):
+        humanScore - 1000;
+        break;
+    }
+}
+)};
+
+function kenScore () {
+	$('.squares').click(function() {
+    switch (true) {
+      case $(this).hasClass('200clues'):
+        kenScore + 200;
+        break;
+      case $(this).hasClass('400clues'):
+        kenScore + 400;
+        break;
+      case $(this).hasClass('600clues'):
+        kenScore + 600;
+        break;
+      case $(this).hasClass('800clues'):
+        kenScore + 800;
+        break;
+      case $(this).hasClass('1000clues'):
+        kenScore + 1000;
+        break;
+    }
+}
+)};
+
+
+function seanScore() {
+	$('.squares').click(function() {
+    switch (true) {
+      case $(this).hasClass('200clues'):
+        seanScore - 200;
+        break;
+      case $(this).hasClass('400clues'):
+        seanScore - 400;
+        break;
+      case $(this).hasClass('600clues'):
+        seanScore - 600;
+        break;
+      case $(this).hasClass('800clues'):
+        seanScore - 800;
+        break;
+      case $(this).hasClass('1000clues'):
+        seanScore - 1000;
+        break;
+    }
+}
+)};
+
 
 
 

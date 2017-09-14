@@ -77,11 +77,30 @@ body {
 
 #scores {
 	display: inline-block;
+	font-family: 'Orbitron', sans-serif;
 }
 
 .response {
 	display:none;
 }
+
+#answerCheck {
+	width:500px;
+	height:500px;
+	border: 5px solid black;
+	background: blue;
+	font-family: impact;
+	font-weight: bold;
+	font-size: 25px;
+	color: goldenrod;
+	float:right;
+	position:relative;
+}
+
+#hiddenAnswer {
+	display: none;
+}
+
 #welcomeScreen {
 	height: 750px;
 	background-image: url("JeopardyWelcome.png");
