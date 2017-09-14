@@ -11,6 +11,7 @@ var human = "";
 var seanScore = 0;
 var kenScore = 0;
 var humanScore = 0;
+var timer;
 
 
 
@@ -62,23 +63,29 @@ $('.squares').click(function(e){
 	// console.log(clues[0][0].question);
 	$('#gameBoard').hide();
 	$('#clueScreen').show();
+	$(this).off('click');
+	$(this).remove('p')
 	$('.clue').append('<p>' + clues[ squareArr[0] ][ squareArr[1] ].question + '</p>')
 	$('#answerCheck').append('<p id="hiddenAnswer">' + clues[ squareArr[0] ][ squareArr[1] ].answer + '</p>');
-	setTimeout(timer);
+	buzzerTimer();
 	$('#submitAnswer').click(function(e){
 	updateScore();
 	})
 	
 });
 
-var timer = setTimeout(function(timer) {
-	$('#buzzer').click(function() {
-		$('.response').show();
-		clearTimeout(timer);
-	}); 
-	$('#buzzer').off('click');
-	aiPlayer();
- }, 5000);
+$('#buzzer').click(function() {
+	console.log('clicked the buzzer')
+	$('.response').show();
+	clearTimeout(timer);
+}); 
+
+function buzzerTimer () {
+	timer = setTimeout(function(timer) {
+		$('#buzzer').off('click');
+		aiPlayer();
+	 }, 5000);
+}
 
 
 
@@ -86,14 +93,15 @@ $('#answerCheck').append($('#hiddenAnswer').val());
 
 
 function aiPlayer() {
-if (Math.random() < 0.5) {
-	AI = "ken";
-	$('#answerCheck').append($('#hiddenAnswer').val());
-	kenScore();
+	var num = Math.random;
+	if (num < 0.5) {
+		// player = "ken";
+		$('#answerCheck').append($('#hiddenAnswer').val());
+		kenUpdate();
 	}else{
-	AI = "sean";
-	$('#answerCheck').append(seanArr[Math.floor(Math.random()*items.length)]);
-	seanScore();
+		// AI = "sean";
+		$('#answerCheck').append(seanArr[Math.floor(Math.random()*seanArr.length)]);
+		seanUpdate();
 	}
 }
 
@@ -152,49 +160,49 @@ function subtractScore () {
 }
 )};
 
-function kenScore () {
+function kenUpdate () {
 	$('.squares').click(function() {
-    switch (true) {
-      case $(this).hasClass('200clues'):
-        kenScore + 200;
-        break;
-      case $(this).hasClass('400clues'):
-        kenScore + 400;
-        break;
-      case $(this).hasClass('600clues'):
-        kenScore + 600;
-        break;
-      case $(this).hasClass('800clues'):
-        kenScore + 800;
-        break;
-      case $(this).hasClass('1000clues'):
-        kenScore + 1000;
-        break;
-    }
-}
+	    switch (true) {
+	      case $(this).hasClass('200clues'):
+	        kenScore + 200;
+	        break;
+	      case $(this).hasClass('400clues'):
+	        kenScore + 400;
+	        break;
+	      case $(this).hasClass('600clues'):
+	        kenScore + 600;
+	        break;
+	      case $(this).hasClass('800clues'):
+	        kenScore + 800;
+	        break;
+	      case $(this).hasClass('1000clues'):
+	        kenScore + 1000;
+	        break;
+	    }
+	}
 )};
 
 
-function seanScore() {
+function seanUpdate() {
 	$('.squares').click(function() {
-    switch (true) {
-      case $(this).hasClass('200clues'):
-        seanScore - 200;
-        break;
-      case $(this).hasClass('400clues'):
-        seanScore - 400;
-        break;
-      case $(this).hasClass('600clues'):
-        seanScore - 600;
-        break;
-      case $(this).hasClass('800clues'):
-        seanScore - 800;
-        break;
-      case $(this).hasClass('1000clues'):
-        seanScore - 1000;
-        break;
-    }
-}
+	    switch (true) {
+	      case $(this).hasClass('200clues'):
+	        seanScore - 200;
+	        break;
+	      case $(this).hasClass('400clues'):
+	        seanScore - 400;
+	        break;
+	      case $(this).hasClass('600clues'):
+	        seanScore - 600;
+	        break;
+	      case $(this).hasClass('800clues'):
+	        seanScore - 800;
+	        break;
+	      case $(this).hasClass('1000clues'):
+	        seanScore - 1000;
+	        break;
+	    }
+	}
 )};
 
 
