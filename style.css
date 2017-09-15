@@ -14,7 +14,7 @@ body {
 
 #gameBoard {
 	text-align: center;
-	background-image: url(jeopardy.png), url("clueScreenBackground.jpg");
+	background-image: url(jeopardy.png);
 	background-size: 75%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -23,6 +23,17 @@ body {
 	display: none;
 }
 
+#background {
+	display: none;
+	background-image: url("clueScreenBackground.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	position: absolute;
+	background-position: left top;
+	margin: 0;
+	height: 1000px;
+	width: 2000px;
+}
 
 #jeopardyBoard {
 	z-index: 0;
@@ -67,12 +78,19 @@ body {
 	display:none;
 	background-image: url("clueScreenBackground.jpg");
 	background-size:cover;
-	height:750px;
+	background-attachment:fixed;
+	position:absolute;
+	background-position:left top;
+	margin:0;
 }
+
+
 
 #scorePodiums {
 	transform: scale(0.75);
 	text-align: center;
+	position:relative;
+	margin-top: 500px;
 }
 
 #scores {
@@ -80,12 +98,11 @@ body {
 	font-family: 'Orbitron', sans-serif;
 	font-weight: bold;
 	color: white;
+	margin-top: -2000px;
 }
 
 #buzzer {
 	background-color: red;
-	height: 10px; 
-	width: 10px;
 	border-radius: 50%
 	font-size: 40px;
 }
@@ -96,6 +113,19 @@ body {
 	display:none;
 	height: 150px;
 	width: 150px;
+}
+
+.clue {
+	width: 350px;
+	height: 350px;
+	border: 5px solid black;
+	background: blue;
+	font-family: impact;
+	font-weight: bold;
+	font-size: 25px;
+	color: goldenrod;
+	margin-left:40px;
+	margin-top:100px;
 }
 
 #answerCheck {
@@ -109,19 +139,27 @@ body {
 	color: goldenrod;
 	float:right;
 	position:relative;
-	margin-top:10px;
+	margin-top: -800px;
+	margin-right:300px;
 }
+
 
 #hiddenAnswer {
 	display: none;
 }
 
 #welcomeScreen {
-	height: 750px;
+	width: 2000px;
+	height: 1000px;/*height: 750px;*/
 	background-image: url("JeopardyWelcome.png");
-	background-size:100%;
-	background-repeat:no-repeat;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	position: absolute;
+	background-position: left top;
+	margin: 0;
 }
+
 
 #podium {
 	z-index:1;
@@ -161,13 +199,3 @@ body {
 	position: relative;
 }
 
-.clue {
-	width: 350px;
-	height: 350px;
-	border: 5px solid black;
-	background: blue;
-	font-family: impact;
-	font-weight: bold;
-	font-size: 25px;
-	color: goldenrod;
-}
