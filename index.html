@@ -12,7 +12,7 @@
 <body>
 	<div id="gameBoard">
 		<div id="background"></div>
-		<div class="categories">
+		<div id="categories">
 			<div id="category1" class="categorySquares"></div>
 			<div id="category2" class="categorySquares"></div>
 			<div id="category3" class="categorySquares"></div>
@@ -69,19 +69,19 @@
 		</div>
 		<div>
 			<img src="jeopardy1996podium copy.png" id="scorePodiums">
-			<div id="scores">
-				<div id="kenPodium">
+			<div>
+				<div id="kenPodium" class="scores">
 					<p id="kenName">Ken</p>
 					<p id="kenDollars">$0<p>
 				</div>
-				<div id="humanPodium">
+				<div id="humanPodium" class="scores">
 					<p id="humanName">You
 					<input type="submit" id="buzzer" value="Buzzer"></input>
 					<input type="submit" id="back" value="Back to Board"></input>
 					</p>
 					<p id="humanDollars">$0</p>
 				</div>
-				<div id="seanPodium">
+				<div id="seanPodium" class="scores">
 					<p id="seanName">Sean</p>
 					<p id="seanDollars">$0</p>
 				</div>
@@ -100,6 +100,8 @@
 		<div><img src="Ken_Jennings.gif" id="ken"></div>
 		<div><img src="suck_it_trebek.gif" id="sean"></div>
 	</div>
+	
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="app.js"></script>
 </body>

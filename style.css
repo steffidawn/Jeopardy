@@ -41,7 +41,6 @@ body {
 	margin-right: 20px;
 }
 
-
 .squares {
 	height: 100px;
 	width: 150px;
@@ -50,55 +49,57 @@ body {
 	font-size:30px;
 	font-weight: bold;
 	color: goldenrod;
+	margin:5px;
 }
 
 .categorySquares {
-	height:100px;
-	width:150px;
-	margin-top: -200px;
-	padding-bottom:0px;
-	padding-top:0px;
-	font-size:15px;
-	font-family:impact;
-	font-weight:bold;
-	color:goldenrod;
+	height: 75px;
+	width: 100px;
+	margin-top: 15px;
+	margin: 20px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	font-size: 20px;
+	font-family: impact;
+	font-weight: bold;
+	color: goldenrod;
 	display: inline-block;
 }
 
-
-.categories {
-	height:100px;
-	width:150px;
-	padding-bottom:0px;
-	padding-top:0px;
-	font-size:5px;
-}
-
 #clueScreen {
-	display:none;
+	display: none;
 	background-image: url("clueScreenBackground.jpg");
-	background-size:cover;
-	background-attachment:fixed;
-	position:absolute;
-	background-position:left top;
+	background-size: 100%;
+	background-attachment: fixed;
+	position: absolute;
+	background-position: left top;
 	margin:0;
+	height:1200px;
+	width:1500px;
 }
-
-
 
 #scorePodiums {
 	transform: scale(0.75);
 	text-align: center;
-	position:relative;
-	margin-top: 500px;
+	position: absolute;
+	margin-top: 175px;
+	margin-bottom: 150px;
+	margin-right: 75px;
 }
 
-#scores {
-	display:inline-block;
+.scores {
+	display: inline-block;
+	position: absolute;
 	font-family: 'Orbitron', sans-serif;
 	font-weight: bold;
 	color: white;
-	margin-top: -2000px;
+	height: 20px;
+	width: 20px;
+	border: 5px solid black;
+	margin: 75px;
+	margin-left: 300px;
+	margin-bottom:500px;
+
 }
 
 #buzzer {
@@ -106,9 +107,6 @@ body {
 	border-radius: 50%
 	font-size: 40px;
 }
-
-
-
 .response {
 	display:none;
 	height: 150px;
@@ -129,18 +127,18 @@ body {
 }
 
 #answerCheck {
-	width:350px;
-	height:350px;
+	width: 350px;
+	height: 350px;
 	border: 5px solid black;
 	background: blue;
 	font-family: impact;
 	font-weight: bold;
 	font-size: 25px;
 	color: goldenrod;
-	float:right;
-	position:relative;
-	margin-top: -800px;
-	margin-right:300px;
+	float: right;
+	position: relative;
+	margin-top: -200px;
+	margin-left: 1000px;
 }
 
 
@@ -171,8 +169,9 @@ body {
 	position:absolute;
 }
 
-.name {
+#enterName {
 	text-align:center;
+	display:inline-block;
 }
 
 #alex {

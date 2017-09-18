@@ -231,10 +231,17 @@ function endGame(){
 
 
 
+
+//Notes on using Modal: 
+//#set opacity of background so you can see the gameboard 
+//#set reload function when exiting Modal 
+
 //To create sound effects:
 //#Download sound clip
 //#Create variable: var = new Audio ('');
 //#var.play();
+
+
 
 //Welcome Screen
 //#Input field for name that will fill in name in name text box in other screens
