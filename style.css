@@ -145,8 +145,8 @@ body {
 	text-align: center;
 	color: goldenrod;
 	float: right;
-	position: absolute;
-	margin-bottom: 350px;
+	position: relative;
+	margin-bottom: 600px;
 	margin-left: 800px;
 }
 
