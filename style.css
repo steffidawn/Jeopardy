@@ -22,6 +22,17 @@ body {
 	overflow: visible;
 }
 
+#background {
+	display: none;
+	background-image: url("clueScreenBackground.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	position: absolute;
+	background-position: left top;
+	margin: 0;
+	height: 1000px;
+	width: 2000px;
+}
 
 #jeopardyBoard {
 	z-index: 0;
@@ -80,7 +91,6 @@ body {
 	margin: 0;
 	height: 1200px;
 	width: 1500px;
-
 }
 
 #scorePodiums {
@@ -112,7 +122,6 @@ body {
 	border-radius: 50%
 	font-size: 40px;
 }
-
 .response {
 	display: none;
 	height: 150px;
@@ -180,7 +189,6 @@ body {
 	width: 350px;
 	height: 275px;
 }
-
 
 #hiddenAnswer {
 	display: none;
@@ -260,6 +268,7 @@ body {
 	cursor: pointer;
 }
 
+
 #podium {
 	z-index:1;
 	height: 301px;
@@ -269,8 +278,6 @@ body {
 	margin-top: -190px;
 	position:absolute;
 }
-
-
 
 #alex {
 	margin-top: 75px;

@@ -15,10 +15,6 @@ var timer;
 var clickedSquare;
 var turns = 0;
 
-
-
-
-
 $.get('http://jservice.io/api/categories?count=10', {
 }).done(function(data) {
   	categories = data;
@@ -43,10 +39,10 @@ $.get('http://jservice.io/api/categories?count=10', {
 	  } 
 });
 
-
 $('#instructions').click(function(){
 	$('#welcomeModal').show();
 });
+
 
 function showCategories(){
 	$('#category1').append('<p>' + properCategories[0].title + '</p>');
@@ -86,12 +82,15 @@ function buzzerTimer () {
 	 }, 5000);
 };
 
-
 $('#buzzer').click(function() {
 	$('.response').show();
 	clearTimeout(timer);
 }); 
 
+$('#buzzer').click(function() {
+	$('.response').show();
+	clearTimeout(timer);
+}); 
 
 $('#submitAnswer').click(function(){
 	updateScore();
@@ -107,6 +106,7 @@ function nextTurn() {
 		$('#trebekReaction').html('');
 		$('#answerInput').val('');
 		$('.response').hide();
+
 	}
 };
 
@@ -165,7 +165,9 @@ function subtractScore () {
 function updateScore() {
 	if ($('#answerInput').val() === $('#hiddenAnswer').text()) {
 		$('#answerCheck').append($('#answerInput').val());
+
 		addScore();
+		// $('#humanDollars').append('$ ' + humanScore);
 	}else{
 		$('#answerCheck').append($('#answerInput').val());
 		subtractScore();
@@ -222,6 +224,7 @@ function seanUpdate() {
 		$('#trebekReaction').append("<img id='seanGif' src='seanReaction.gif'>");
 	}
 };
+
 
 function aiPlayer() {
 	var num = Math.random();
