@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 var categories = [];
 var clues = [];
 var properCategories = [];
-var seanArr = ["You think you're pretty smart, don't you, Trebek? What with your Diego mustache and your greasy hair!", "Moo", "Febtober", "Potent Potables!"];
+var seanArr = ["You think you're pretty smart, don't you, Trebek? What with your Diego mustache and your greasy hair!", "Moo", "Febtober", "Potent Potables!", "Colors that end in -urple"];
 var player = "";
 var sean = "Sean";
 var ken = "Ken";
@@ -14,7 +14,6 @@ var humanScore = 0;
 var timer;
 var clickedSquare;
 var turns = 0;
-
 
 $.get('http://jservice.io/api/categories?count=10', {
 }).done(function(data) {
@@ -40,6 +39,11 @@ $.get('http://jservice.io/api/categories?count=10', {
 	  } 
 });
 
+$('#instructions').click(function(){
+	$('#welcomeModal').show();
+});
+
+
 function showCategories(){
 	$('#category1').append('<p>' + properCategories[0].title + '</p>');
 	$('#category2').append('<p>' + properCategories[1].title + '</p>');
@@ -49,8 +53,7 @@ function showCategories(){
 	$('#category6').append('<p>' + properCategories[5].title + '</p>');
 };
 
-$('#submitName').click(function(){
-	//add append name to textboxes
+$('.start').click(function(){
 	$('#welcomeScreen').hide();
 	$('#gameBoard').show();
 	showCategories();
@@ -79,12 +82,15 @@ function buzzerTimer () {
 	 }, 5000);
 };
 
-
 $('#buzzer').click(function() {
 	$('.response').show();
 	clearTimeout(timer);
 }); 
 
+$('#buzzer').click(function() {
+	$('.response').show();
+	clearTimeout(timer);
+}); 
 
 $('#submitAnswer').click(function(){
 	updateScore();
@@ -92,11 +98,15 @@ $('#submitAnswer').click(function(){
 
 
 function nextTurn() {
-	if (turns === 2){
+	if (turns === 3){
 		endGame();
 	}else{
 		$('.clue').html('');
-		$('.answerCheck').html('');
+		$('#answerCheck').html('');
+		$('#trebekReaction').html('');
+		$('#answerInput').val('');
+		$('.response').hide();
+
 	}
 };
 
@@ -106,18 +116,23 @@ function addScore() {
 	if (clickedSquare.parent().hasClass('200clues')){
 		humanScore = humanScore + 200;
 		$('#humanDollars').html('$ ' + humanScore);
+		$('#trebekReaction').append("<img id='correctTrebekGif' src='correctTrebek.gif'>");
 	}else if (clickedSquare.parent().hasClass('400clues')){
 		humanScore = humanScore + 400;
 		$('#humanDollars').html('$ ' + humanScore);
+		$('#trebekReaction').append("<img id='correctTrebekGif' src='correctTrebek.gif'>");
 	}else if (clickedSquare.parent().hasClass('600clues')) {
 		humanScore = humanScore + 600;
     	$('#humanDollars').html('$ ' + humanScore);
+    	$('#trebekReaction').append("<img id='correctTrebekGif' src='correctTrebek.gif'>");
 	}else if (clickedSquare.parent().hasClass('800clues')) {
 		humanScore = humanScore + 800;
         $('#humanDollars').html('$ ' + humanScore);
+        $('#trebekReaction').append("<img id='correctTrebekGif' src='correctTrebek.gif'>");
 	}else if (clickedSquare.parent().hasClass('1000clues')) {
 		humanScore = humanScore + 1000;
 		$('#humanDollars').html('$ ' + humanScore);
+		$('#trebekReaction').append("<img id='correctTrebekGif' src='correctTrebek.gif'>");
 	}
 };
 
@@ -126,32 +141,36 @@ function subtractScore () {
     if (clickedSquare.parent().hasClass('200clues')){
 		humanScore = humanScore - 200;
 		$('#humanDollars').html('$ ' + humanScore);
+		$('#trebekReaction').append("<img id='wrongTrebekGif' src='wrongTrebek.gif'>");
 	}else if (clickedSquare.parent().hasClass('400clues')){
 		humanScore = humanScore - 400;
 		$('#humanDollars').html('$ ' + humanScore);
+		$('#trebekReaction').append("<img id='wrongTrebekGif' src='wrongTrebek.gif'>");
 	}else if (clickedSquare.parent().hasClass('600clues')) {
 		humanScore = humanScore - 600;
     	$('#humanDollars').html('$ ' + humanScore);
+    	$('#trebekReaction').append("<img id='wrongTrebekGif' src='wrongTrebek.gif'>");
 	}else if (clickedSquare.parent().hasClass('800clues')) {
 		humanScore = humanScore - 800;
         $('#humanDollars').html('$ ' + humanScore);
+        $('#trebekReaction').append("<img id='wrongTrebekGif' src='wrongTrebek.gif'>");
 	}else if (clickedSquare.parent().hasClass('1000clues')) {
 		humanScore = humanScore - 1000;
 		$('#humanDollars').html('$ ' + humanScore);
+		$('#trebekReaction').append("<img id='wrongTrebekGif' src='wrongTrebek.gif'>");
 	}
 };
 
 
 function updateScore() {
 	if ($('#answerInput').val() === $('#hiddenAnswer').text()) {
-		$('#hiddenAnswer').show();
-		///seperate show or append that will show the correct answer in the check answer box
+		$('#answerCheck').append($('#answerInput').val());
+
 		addScore();
 		// $('#humanDollars').append('$ ' + humanScore);
 	}else{
- 		$('#hiddenAnswer').show();
+		$('#answerCheck').append($('#answerInput').val());
 		subtractScore();
-		//$('#humanDollars').append('$ ' + humanScore);
 	}
 };
 
@@ -161,18 +180,23 @@ function kenUpdate () {
 	if (clickedSquare.parent().hasClass('200clues')){
 		kenScore = kenScore + 200;
 		$('#kenDollars').html('$ ' + kenScore);
+		$('#trebekReaction').append("<img id='kenGif' src='croppedKenGif.gif'>");
 	}else if (clickedSquare.parent().hasClass('400clues')){
 		kenScore = kenScore + 400;
 		$('#kenDollars').html('$ ' + kenScore);
+		$('#trebekReaction').append("<img id='kenGif' src='croppedKenGif.gif'>");
 	}else if (clickedSquare.parent().hasClass('600clues')) {
 		kenScore = kenScore + 600;
     	$('#kenDollars').html('$ ' + kenScore);
+    	$('#trebekReaction').append("<img id='kenGif' src='croppedKenGif.gif'>");
 	}else if (clickedSquare.parent().hasClass('800clues')) {
 		kenScore = kenScore + 800;
         $('#kenDollars').html('$ ' + kenScore);
+        $('#trebekReaction').append("<img id='kenGif' src='croppedKenGif.gif'>");
 	}else if (clickedSquare.parent().hasClass('1000clues')) {
 		kenScore = kenScore + 1000;
 		$('#kenDollars').html('$ ' + kenScore);
+		$('#trebekReaction').append("<img id='kenGif' src='croppedKenGif.gif'>");
 	}
 };
 
@@ -181,20 +205,26 @@ function seanUpdate() {
 	if (clickedSquare.parent().hasClass('200clues')){
 		seanScore = seanScore - 200;
 		$('#seanDollars').html('$ ' + seanScore);
+		$('#trebekReaction').append("<img id='seanGif' src='seanReaction.gif'>");
 	}else if (clickedSquare.parent().hasClass('400clues')){
 		seanScore = seanScore - 400;
 		$('#seanDollars').html('$ ' + seanScore);
+		$('#trebekReaction').append("<img id='seanGif' src='seanReaction.gif'>");
 	}else if (clickedSquare.parent().hasClass('600clues')) {
 		seanScore = seanScore - 600;
     	$('#seanDollars').html('$ ' + seanScore);
+    	$('#trebekReaction').append("<img id='seanGif' src='seanReaction.gif'>");
 	}else if (clickedSquare.parent().hasClass('800clues')) {
 		seanScore = seanScore - 800;
         $('#seanDollars').html('$ ' + seanScore);
+        $('#trebekReaction').append("<img id='seanGif' src='seanReaction.gif'>");
 	}else if (clickedSquare.parent().hasClass('1000clues')) {
 		seanScore = seanScore - 1000;
 		$('#seanDollars').html('$ ' + seanScore);
+		$('#trebekReaction').append("<img id='seanGif' src='seanReaction.gif'>");
 	}
 };
+
 
 function aiPlayer() {
 	var num = Math.random();
@@ -220,43 +250,25 @@ $('#back').click(function(){
 
 function endGame(){
 	if (humanScore > kenScore && humanScore > seanScore) {
-		alert('You win!');
+		alert("You won!");
+		location.reload();
+		// $('#resultsModal').html('<p>You won!</p>');
+		// $('#resultsModal').show();
 	}else if (kenScore > humanScore && kenScore > seanScore){
-		alert('Ken won!');
+		alert("Ken won!");
+		location.reload();
+		// $('#resultsModal').html('<p>Ken Jennings!</p>');
+		// $('#resultsModal').show();
 	}else if (seanScore > humanScore && seanScore > kenScore){
-		alert ('Sean won!');
+		alert("Sean won!");
+		location.reload();
+		// $('#resultsModal').html('<p>SeanConnery!</p>');
+		// $('#resultsModal').show();
 	}
-	location.reload();
+	// $('#playAgain').click(function(){
+	// 	location.reload();
+	// })
 };
 
 
-
-
-//Notes on using Modal: 
-//#set opacity of background so you can see the gameboard 
-//#set reload function when exiting Modal 
-
-//To create sound effects:
-//#Download sound clip
-//#Create variable: var = new Audio ('');
-//#var.play();
-
-
-
-//Welcome Screen
-//#Input field for name that will fill in name in name text box in other screens
-//#Click on submit name button will trigger the #gameBoard to show
-
-//Game Board
-//#
-//#Click events for each square that randomly pull data out of api. 
-	//#Human has XXX seconds to hit buzzer (space bar?), otherwise one of the to AIs will be randomly chosen. 
-	//#Sean Connery will pick an answer out of a stupid answer array (always wrong) and Ken Jennings will pick out of a correct answer array (always right).
-//#Clue would be displayed in clue screen, answer to be hidden until player has submitted an answer.
-//#Text in square div emptied once a that square has been selected
-
-
-//clueScreen
-	//#Random clue from API will create a new <p> into the clue div displayed on the clueScreen.
-	//#Answer input by human player will be compared to answer in API
 });

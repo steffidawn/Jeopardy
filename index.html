@@ -10,55 +10,82 @@
 	<title>Jeopardy!</title>
 </head>
 <body>
+	<div id="welcomeScreen">
+		<div id="welcomeModal" class="modal">
+			<div class="modalContent">
+				<p>
+					<span>Welcome to Jeopardy!</span>
+					<br>How to play:
+					<ul id="gamePlay">
+						<li>You will be playing against Sean Connery and Ken Jennings.</li>
+						<li>Choose a clue from the Jeopardy board to begin.</li>
+						<li>You have 5 seconds to respond. Otherwise, Sean or Ken will be able to buzz in.</li>
+						<li>If you answer correctly, the dollar value of your chosen clue will be added to your score, Should you answer incorrectly, the dollar value will be subtracted from your score.</li>
+						<li>Once all clues have been answered, the player with the highest score wins!</li>
+					</ul>
+				</p>
+				<input type="submit" value="Let's Play!" id = "playButton" class="start"></input>
+			</div>
+		</div>
+		<div class="startGame">
+			<input type="submit" value="Let's Play!" class="start"></input>
+			<input type="submit" value="Instructions" id="instructions"></input>
+		</div>
+		<div><img src="alex-trebek1_219x600.png" id="alex"></div>
+		<div><img src="jeopardy1996podium.png" id="podium"></div>
+		<div><img src="Ken_Jennings.gif" id="ken"></div>
+		<div><img src="suck_it_trebek.gif" id="sean"></div>
+	</div>
 	<div id="gameBoard">
-		<div id="background"></div>
-		<div id="categories">
-			<div id="category1" class="categorySquares"></div>
-			<div id="category2" class="categorySquares"></div>
-			<div id="category3" class="categorySquares"></div>
-			<div id="category4" class="categorySquares"></div>
-			<div id="category5" class="categorySquares"></div>
-			<div id="category6" class="categorySquares"></div>
+		<div id="categories" class="row">
+			<div id="category1" class="categorySquares squares"></div>
+			<div id="category2" class="categorySquares squares"></div>
+			<div id="category3" class="categorySquares squares"></div>
+			<div id="category4" class="categorySquares squares"></div>
+			<div id="category5" class="categorySquares squares"></div>
+			<div id="category6" class="categorySquares squares"></div>
 		</div>
-		<div class="200clues">
-			<div id="0-0" class="squares">$200</div>
-			<div id="1-0" class="squares">$200</div>
-			<div id="2-0" class="squares">$200</div>
-			<div id="3-0" class="squares">$200</div>
-			<div id="4-0" class="squares">$200</div>
-			<div id="5-0" class="squares">$200</div>
-		</div>
-		<div class="400clues">
-			<div id="0-1" class="squares">$400</div>
-			<div id="1-1" class="squares">$400</div>
-			<div id="2-1" class="squares">$400</div>
-			<div id="3-1" class="squares">$400</div>
-			<div id="4-1" class="squares">$400</div>
-			<div id="5-1" class="squares">$400</div>
-		</div>
-		<div class="600clues">
-			<div id="0-2" class="squares">$600</div>
-			<div id="1-2" class="squares">$600</div>
-			<div id="2-2" class="squares">$600</div>
-			<div id="3-2" class="squares">$600</div>
-			<div id="4-2" class="squares">$600</div>
-			<div id="5-2" class="squares">$600</div>
-		</div>
-		<div class="800clues">
-			<div id="0-3" class="squares">$800</div>
-			<div id="1-3" class="squares">$800</div>
-			<div id="2-3" class="squares">$800</div>
-			<div id="3-3" class="squares">$800</div>
-			<div id="4-3" class="squares">$800</div>
-			<div id="5-3" class="squares">$800</div>
-		</div>
-		<div class="1000clues">
-			<div id="0-4" class="squares">$1000</div>
-			<div id="1-4" class="squares">$1000</div>
-			<div id="2-4" class="squares">$1000</div>
-			<div id="3-4" class="squares">$1000</div>
-			<div id="4-4" class="squares">$1000</div>
-			<div id="5-4" class="squares">$1000</div>
+		<div id="clues">
+			<div class="200clues row">
+				<div id="0-0" class="squares">$200</div>
+				<div id="1-0" class="squares">$200</div>
+				<div id="2-0" class="squares">$200</div>
+				<div id="3-0" class="squares">$200</div>
+				<div id="4-0" class="squares">$200</div>
+				<div id="5-0" class="squares">$200</div>
+			</div>
+			<div class="400clues row">
+				<div id="0-1" class="squares">$400</div>
+				<div id="1-1" class="squares">$400</div>
+				<div id="2-1" class="squares">$400</div>
+				<div id="3-1" class="squares">$400</div>
+				<div id="4-1" class="squares">$400</div>
+				<div id="5-1" class="squares">$400</div>
+			</div>
+			<div class="600clues row">
+				<div id="0-2" class="squares">$600</div>
+				<div id="1-2" class="squares">$600</div>
+				<div id="2-2" class="squares">$600</div>
+				<div id="3-2" class="squares">$600</div>
+				<div id="4-2" class="squares">$600</div>
+				<div id="5-2" class="squares">$600</div>
+			</div>
+			<div class="800clues row">
+				<div id="0-3" class="squares">$800</div>
+				<div id="1-3" class="squares">$800</div>
+				<div id="2-3" class="squares">$800</div>
+				<div id="3-3" class="squares">$800</div>
+				<div id="4-3" class="squares">$800</div>
+				<div id="5-3" class="squares">$800</div>
+			</div>
+			<div class="1000clues row">
+				<div id="0-4" class="squares">$1000</div>
+				<div id="1-4" class="squares">$1000</div>
+				<div id="2-4" class="squares">$1000</div>
+				<div id="3-4" class="squares">$1000</div>
+				<div id="4-4" class="squares">$1000</div>
+				<div id="5-4" class="squares">$1000</div>
+			</div>
 		</div>
 	</div>
 	<div id="clueScreen">
@@ -68,8 +95,10 @@
 			<input type="submit" value="Submit Answer" id="submitAnswer">
 		</div>
 		<div>
-			<img src="jeopardy1996podium copy.png" id="scorePodiums">
-			<div>
+			<div id="scorePodiums">
+				<img src="jeopardy1996podium copy.png">
+			</div>
+			<div id="podiums">
 				<div id="kenPodium" class="scores">
 					<p id="kenName">Ken</p>
 					<p id="kenDollars">$0<p>
@@ -89,19 +118,14 @@
 		</div>
 		<div id="answerCheck"></div>
 		<div id="trebekReaction"></div>
+		<!-- End Game Modal that needs to be revised -->
+		<!-- <div id="resultsModal">
+			<div id="modalContent">
+				<p>Here is the results modal</p>
+				<input type="submit" value="Play Again!" id="playAgain"></input>
+			</div>
+		</div> -->
 	</div>
-	<div id="welcomeScreen">
-		<div id="enterName" class="name">
-			<input type="text"></input>
-			<input type="submit" value="Submit Name" id="submitName" class="name"></input>
-		</div>
-		<div><img src="alex-trebek1_219x600.png" id="alex"></div>
-		<div><img src="jeopardy1996podium.png" id="podium"></div>
-		<div><img src="Ken_Jennings.gif" id="ken"></div>
-		<div><img src="suck_it_trebek.gif" id="sean"></div>
-	</div>
-	
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="app.js"></script>
 </body>

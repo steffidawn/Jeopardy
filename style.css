@@ -8,19 +8,18 @@ font for Sean: font-family: 'Sedgwick Ave', cursive;
 
 body {
   	margin: 0 auto;
-  	background-size: 1000px;
-  	background-repeat: no-repeat;
 }
 
 #gameBoard {
 	text-align: center;
-	background-image: url(jeopardy.png);
-	background-size: 75%;
+	background-image: url("gameBoardBackground.png");
+	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: center;
-	width: 1200px;
-	height: 700px;
+	background-position:left top; 
+	width: 1500px;
+	height: 800px;
 	display: none;
+	overflow: visible;
 }
 
 #background {
@@ -42,23 +41,39 @@ body {
 }
 
 .squares {
-	height: 100px;
-	width: 150px;
+	padding: 20px;
+ 	padding-top:30px;
+	width:100px;
+	height:50px;
 	display: inline-block;
 	font-family: impact;
 	font-size:30px;
 	font-weight: bold;
 	color: goldenrod;
-	margin:5px;
+	margin:2px;
+ 	margin-top:4px;
+}
+
+.row {
+	clear:both;
+	overflow:hidden;
+}
+
+
+
+.categories {
+	margin-top: 200px;
+	overflow: auto;
 }
 
 .categorySquares {
-	height: 75px;
-	width: 100px;
-	margin-top: 15px;
-	margin: 20px;
-	padding-bottom: 0px;
-	padding-top: 0px;
+	/*height: 30px;
+	width: 75px;
+	margin-top: 50px;
+	margin: 30px;
+	padding-top: 20px;*/
+	margin-top:150;
+	height:50px;
 	font-size: 20px;
 	font-family: impact;
 	font-weight: bold;
@@ -68,14 +83,14 @@ body {
 
 #clueScreen {
 	display: none;
-	background-image: url("clueScreenBackground.jpg");
+	background-image: url("clueScreenBackground.jpg");*/
 	background-size: 100%;
 	background-attachment: fixed;
 	position: absolute;
 	background-position: left top;
-	margin:0;
-	height:1200px;
-	width:1500px;
+	margin: 0;
+	height: 1200px;
+	width: 1500px;
 }
 
 #scorePodiums {
@@ -84,21 +99,21 @@ body {
 	position: absolute;
 	margin-top: 175px;
 	margin-bottom: 150px;
-	margin-right: 75px;
+	margin-right: 100px;
 }
 
 .scores {
 	display: inline-block;
-	position: absolute;
+	position: relative;
 	font-family: 'Orbitron', sans-serif;
 	font-weight: bold;
+	text-align: center;
 	color: white;
 	height: 20px;
-	width: 20px;
-	border: 5px solid black;
-	margin: 75px;
+	width: 45px;
+	margin: 100px;
 	margin-left: 300px;
-	margin-bottom:500px;
+	margin-bottom:375px;
 
 }
 
@@ -108,7 +123,7 @@ body {
 	font-size: 40px;
 }
 .response {
-	display:none;
+	display: none;
 	height: 150px;
 	width: 150px;
 }
@@ -121,34 +136,80 @@ body {
 	font-family: impact;
 	font-weight: bold;
 	font-size: 25px;
+	text-align: center;
 	color: goldenrod;
-	margin-left:40px;
-	margin-top:100px;
+	margin-left: 260px;
+	margin-top:120px;
+	position: relative;
 }
 
 #answerCheck {
 	width: 350px;
-	height: 350px;
+	height: 75px;
 	border: 5px solid black;
 	background: blue;
 	font-family: impact;
 	font-weight: bold;
 	font-size: 25px;
+	text-align: center;
 	color: goldenrod;
 	float: right;
 	position: relative;
-	margin-top: -200px;
-	margin-left: 1000px;
+	margin-bottom: 600px;
+	margin-left: 800px;
 }
 
+#trebekReaction {
+	background: blue;
+	width: 350px;
+	height: 350px;
+	border: 5px solid black;
+	margin-left: 800px;
+	margin-bottom: 800px;
+	position: relative;
+}
+
+#seanGif {
+	width: 350px;
+	height: 275px;
+}
+
+#kenGif {
+	width: 350px;
+	height: 275px;
+}
+
+#wrongTrebekGif {
+	width: 350px;
+	height: 275px;
+
+}
+
+#correctTrebekGif {
+	width: 350px;
+	height: 275px;
+}
 
 #hiddenAnswer {
 	display: none;
 }
 
+/*Results Modal not functioning*/
+/*#resultsModal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0; 
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.2);
+}*/
+
 #welcomeScreen {
 	width: 2000px;
-	height: 1000px;/*height: 750px;*/
+	height: 1000px;
 	background-image: url("JeopardyWelcome.png");
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -158,6 +219,55 @@ body {
 	margin: 0;
 }
 
+#gamePlay {
+	text-align: left;
+	font-size: 20px;
+}
+.startGame {
+	display: inline-block;
+	background-color: goldenrod;
+	color: black;
+	position: center;
+	margin-top: 100px;
+}
+
+.modal {
+	display:none;
+	position: fixed;
+	z-index: 1;
+	left: 0; 
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.2);
+}
+
+
+.modalContent {
+	text-align: center;
+	color: white;
+	font-family: impact;
+	font-size: 25px;
+	border: 5px solid black;
+	background: blue;
+	margin: 20% auto;
+	padding: 20px;
+	width: 70%;
+	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.2);
+}
+
+#playButton {
+	background-color: goldenrod;
+	color: black;
+}
+
+#playButton:hover,#playButton:focus {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 
 #podium {
 	z-index:1;
@@ -165,27 +275,23 @@ body {
 	width: 798px;
 	text-align: center;
 	margin-left: 300px;
-	margin-top: -185px;
+	margin-top: -190px;
 	position:absolute;
 }
 
-#enterName {
-	text-align:center;
-	display:inline-block;
-}
-
 #alex {
-	margin-top:70px;
-	position:relative;
+	margin-top: 75px;
+	position: relative;
 }
 
 #ken {
 	z-index:0;
-	transform:scale(0.5);
-	margin-left:700px;
+	transform: scale(0.5);
+	margin-left: 700px;
 	margin-top: -750px;
 	margin-bottom:40px;
 	position: relative;
+
 
 }
 
